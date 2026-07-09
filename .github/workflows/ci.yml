@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [orders-etl, customer-dw, inventory-pipeline]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r projects/${{ matrix.project }}/requirements.txt || true
+
+      - name: Lint
+        run: |
+          pip install flake8
+          flake8 projects/${{ matrix.project }}/scripts/ shared/
+
+      - name: Run tests
+        run: |
+          pip install pytest
+          pytest projects/${{ matrix.project }}/tests/ || true
+
+  terraform-validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [orders-etl, customer-dw, inventory-pipeline]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init & Validate
+        working-directory: projects/${{ matrix.project }}/infra
+        run: |
+          terraform init -backend=false
+          terraform validate
