@@ -37,7 +37,7 @@ variable "environment" {
 # ---------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "orders_raw" {
-  bucket = "orders-etl-raw-${var.environment}"
+  bucket = "orders-etl-raw-1-${var.environment}"
 
   tags = {
     Project     = "orders-etl"
