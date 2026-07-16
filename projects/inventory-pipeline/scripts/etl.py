@@ -3,9 +3,10 @@ inventory-pipeline: Extract → Transform → Load pipeline for inventory data.
 """
 
 import sys
+
 sys.path.insert(0, "../../../")
 
-from shared.utils import get_logger, get_aws_session
+from shared.utils import get_logger  # noqa: E402
 
 logger = get_logger("inventory-pipeline")
 

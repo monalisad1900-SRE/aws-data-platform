@@ -16,6 +16,7 @@ def get_logger(name: str) -> logging.Logger:
 
 
 def get_aws_session(region: str = "us-east-1"):
-    """Return a boto3 session. Reads credentials from environment / IAM role."""
+    """Return a boto3 session. 
+    Reads credentials from environment / IAM role."""
     import boto3
     return boto3.Session(region_name=region)
