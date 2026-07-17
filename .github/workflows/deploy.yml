@@ -30,3 +30,7 @@ jobs:
         - name: Terraform Plan
           working-directory: projects/orders-etl/infra
           run: terraform plan  
+
+        - name: Terraform apply
+          working-directory: projects/orders-etl/infra
+          run: terraform apply -auto-approve   
