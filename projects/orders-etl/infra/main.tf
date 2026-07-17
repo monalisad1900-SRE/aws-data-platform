@@ -37,7 +37,7 @@ variable "environment" {
 # ---------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "orders_raw" {
-  bucket = "orders-etl-raw-user-${var.environment}"
+  bucket = "orders-etl-raw-user-lisa-${var.environment}"
 
   tags = {
     Project     = "orders-etl"
@@ -78,7 +78,7 @@ resource "aws_s3_bucket_public_access_block" "orders_raw_block_public" {
 # ---------------------------------------------------------------------------
 
 resource "aws_s3_bucket" "orders_processed" {
-  bucket = "orders-etl-processed-user-${var.environment}"
+  bucket = "orders-etl-processed-user-lisa-${var.environment}"
 
   tags = {
     Project     = "orders-etl"
