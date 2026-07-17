@@ -9,6 +9,7 @@ sys.path.insert(0, "../../../")
 
 logger = get_logger("orders-etl")
 
+
 def extract():
     logger.info("Extracting orders data...")
     # TODO: read from source (S3, RDS, API, etc.)
