@@ -2,10 +2,10 @@
 orders-etl: Extract → Transform → Load pipeline.
 """
 
+from shared.utils import get_logger
 import sys
-sys.path.insert(0, "../../../")
 
-from shared.utils import get_logger, get_aws_session
+sys.path.insert(0, "../../../")
 
 logger = get_logger("orders-etl")
 
