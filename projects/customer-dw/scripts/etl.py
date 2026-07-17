@@ -3,9 +3,9 @@ customer-dw: Extract → Transform → Load pipeline for customer data warehouse
 """
 
 import sys
-sys.path.insert(0, "../../../")
-
 from shared.utils import get_logger
+
+sys.path.insert(0, "../../../")
 
 logger = get_logger("customer-dw")
 
